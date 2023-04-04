@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Premium Navigation Menu</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000;
+			overflow: hidden;
+		}
+
+		.container {
+			position: relative;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.container:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			background: linear-gradient(-45deg, #00c9ff, #92fe9d, #ff3d3d, #ff5c5c, #fff200, #00c9ff);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+		}
+
+		@keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+
+		nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: -100px;
+			width: 100px;
+			z-index: 1;
+		}
+
+		nav ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		nav li {
+			margin-bottom: 10px;
+		}
+
+		nav a {
+			display: block;
+			padding: 10px;
+			color: #fff;
+			text-decoration: none;
+			text-align: center;
+			font-size: 18px;
+			background-color: rgba(255,255,255,0.2);
+			transition: all 0.3s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: rgba(255,255,255,0.5);
+			color: #000;
+		}
+
+		.light {
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			opacity: 0.5;
+			animation: move 2s infinite;
+		}
+
+		.light-1 {
+			background-color: #ff3d3d;
+			top: 20%;
+			left: 10%;
+		}
+
+		.light-2 {
+			background-color: #00c9ff;
+			top: 40%;
+			left: 30%;
+		}
+
+		.light-3 {
+			background-color: #fff200;
+			top: 60%;
+			left: 50%;
+		}
+
+		.light-4 {
+			background-color: #ff5c5c;
+			top: 80%;
+			left: 70%;
+		}
+
+		@keyframes move {
+			0% {
+				transform: translate(-50%,-50%);
+			}
+			25% {
+				transform: translate(-100%, -50%);
+			}
+			50% {
+				transform: translate(-100%, -150%);
+			}
+			75% {
+				transform: translate(-50%, -150%);
+			}
+			100% {
+				transform: translate(-50%, -50%);
+			}
+		}
+        .navbar {
+			overflow: hidden;
+			background-color:transparent;
+			font-family: Arial, sans-serif;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			color: #f2f2f2;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		.navbar a:hover {
+			background-color:transparent;
+			color: black;
+		}
+
+		.active {
+			background-color: transparent;
+			color: white;
+		}
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 400px;
+			height: 300px;
+			background-color: #f5f5f5;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+			z-index: 999;
+		}
+		.popup h2 {
+			margin-top: 0px;
+			margin-bottom: 20px;
+			text-align: center;
+			font-size: 24px;
+			color: #555;
+		}
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			color: #555;
+			border: none;
+			background: transparent;
+		}
+		.close:hover {
+			color: #222;
+		}
+		.form-input {
+			display: block;
+			margin-bottom: 10px;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			background-color: #eee;
+			color: #555;
+			font-size: 16px;
+			font-family: Arial, sans-serif;
+			box-sizing: border-box;
+		}
+		.form-input:focus {
+			outline: none;
+			background-color: #fff;
+			box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+		}
+		.submit-btn {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			background-color: #4CAF50;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+			box-sizing: border-box;
+		}
+		.submit-btn:hover {
+			background-color: #3e8e41;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+        <div class="navbar">
+            <a class="active" href="#home">Home</a>
+            <a href="services.htm" target="_blank">Courses</a>
+            <a href="#Sign in">Sign in</a>
+            <a  onclick="openPopup()"  href="#Login" >Login</a>
+        </div>
+	
+	<div class="popup" id="login-popup">
+		<span class="close" onclick="closePopup()">&times;</span>
+		<h2>Login</h2>
+		<form>
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username" class="form-input"><br>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" class="form-input"><br>
+			<input type="submit" value="Submit" class="submit-btn">
+		</form>
+	</div>
+	
+	<script>
+		function openPopup() {
+			document.getElementById("login-popup").style.display = "block";
+		}
+
+		function closePopup() {
+			document.getElementById("login-popup").style.display = "none";
+		}
+	</script>
+    
+</body>
