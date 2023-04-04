@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Services of UPADHYAI</title>
+	<style>
+		body {
+      margin: 0;
+			padding: 0;
+		}
+		
+		#video-background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			min-width: 100%;
+			min-height: 100%;
+			z-index: -1;
+		}
+		
+
+    .toggle-btn {
+			margin: 10px 0;
+			padding: 10px;
+			background-color: #f0f0f0;
+			border: none;
+			cursor: pointer;
+			width: 200px;
+			text-align: left;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.toggle-btn.active {
+			background-color: #ccc;
+		}
+		.toggle-content {
+			display: none;
+			margin-left: 20px;
+		}
+		.toggle-content.active {
+			display: block;
+		}
+		.sub-menu {
+			padding-left: 20px;
+		}
+		.sub-menu li {
+			list-style-type: none;
+			margin: 5px 0;
+		}
+		.sub-menu li a {
+			color: blue;
+			text-decoration: none;
+			font-weight: normal;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.sub-menu li a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<video id="video-background" autoplay muted loop>
+		<source src="technology-background.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	
+	<h1 style="color:orangered;">Technologies Available</h1>
+	<button class="toggle-btn" onclick="toggleContent(1)">Video Courses</button>
+	<div class="toggle-content" id="content1">
+		<ul class="sub-menu">
+			<li><a href="#" style="color: orangered;">Python</a></li>
+			<li><a href="#" style="color: orangered;">Java</a></li>
+			<li><a href="#" style="color: orangered;">Linux</a></li>
+		</ul>
+	</div>
+  <br>
+	<button class="toggle-btn" onclick="toggleContent(2)">Reference Books</button>
+	<div class="toggle-content" id="content2">
+		<ul class="sub-menu">
+			<li><a href="#" style="color: orangered;">Python</a></li>
+			<li><a href="#" style="color: orangered;">Java</a></li>
+			<li><a href="#" style="color: orangered;">Linux</a></li>
+		</ul>
+	</div>
+  <br>
+	<button class="toggle-btn" onclick="toggleContent(3)">Questions to Solve</button>
+	<div class="toggle-content" id="content3">
+		<ul class="sub-menu">
+			<li><a href="#" style="color: orangered;">Python</a></li>
+			<li><a href="#" style="color: orangered;">Java</a></li>
+			<li><a href="#" style="color: orangered;">Linux</a></li>
+		</ul>
+	</div>
+	<script>
+		function toggleContent(id) {
+			var btn = document.querySelector('.toggle-btn:nth-of-type(' + id + ')');
+			var content = document.querySelector('.toggle-content:nth-of-type(' + id + ')');
+			btn.classList.toggle('active');
+			content.classList.toggle('active');
+		}
+	</script>
+</body>
+</html>
